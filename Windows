@@ -1,0 +1,11 @@
+Universal link from Splunk
+https://docs.splunk.com/Documentation/Forwarder/9.2.0/Forwarder/InstallaWindowsuniversalforwarderfromaninstaller
+
+Step by Step Process for Installer
+1. Download the file from the universal link
+
+2. Install the msi executable file
+
+3. While Creating the installation create a admin username and password for setting up
+
+4. Configure the Deployment Server and Receiving Indexer using with host name or IP address and management port provided by Organization.
