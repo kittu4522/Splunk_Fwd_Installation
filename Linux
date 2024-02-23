@@ -1,0 +1,64 @@
+Universal link from Splunk
+https://docs.splunk.com/Documentation/Forwarder/9.2.0/Forwarder/Installanixuniversalforwarder
+
+Step by Step Process for tar installation
+1. Download the tar file from the universal using the link 
+
+2. Login to Root
+
+3. Create user using the below commands
+    ~Root: useradd -m splunkfwd
+
+    ~Root: groupadd splunkfwd
+
+3. Before installing Splunk Forwarder create splunk home directory
+    ~Root: export SPLUNK_HOME="/opt/splunkforwarder"
+    ~Root: mkdir $SPLUNK_HOME
+
+4. Make sure the Splunk Forwarder tar file in present in $SPLUNK_HOME (eg: /opt/splunkforwarder/splunkforwarder.tgz)
+
+//For tar file installation
+5. Extract the tar file 
+    ~Root: tar xvzf splunkforwarder.tgz
+
+//For rpm file installation
+6. For rpm installation
+    chmod 644 splunkforwarder_package_name.rpm
+    rpm -i splunkforwarder_package_name.rpm
+
+//For deb file installation
+7. For deb installation
+    dpkg -i splunkforwarder_package_name.deb
+
+8. Change the ownership of Splunk Home directory
+    chown -R splunkfwd:splunkfwd $SPLUNK_HOME
+
+9. Run the splunk deamon
+    sudo $SPLUNK_HOME/bin/splunk start 
+    OR
+    //Easiest way
+    sudo $SPLUNK_HOME/bin/splunk start --accept-license 
+
+10. Once splunk deamon is started check using top command
+
+11. Configure a reciever using configuration file or using command line
+    ./splunk add forward-server <host name or ip address>:<listening port>
+
+    eg: ./splunk add forward-server idx1.mycompany.com:9997
+
+12. Add Log source to splunk forwarder
+    ./splunk add monitor /var/log
+
+#Troubleshotting
+
+1. For stopping the service
+    ./splunk stop
+
+2. Restarting the service
+    ./splunk restart
+
+3. Starting the service
+    ./splunk start
+
+    
+    
